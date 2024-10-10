@@ -4,7 +4,7 @@
 ### Request GPU and Set up Environment
 ```
 # Request 1 GPU for 5 minutes​
-salloc --job-name=ceb --nodes=1 --gres=gpu:1 --time=0:05:00 -p gen_gpu
+srun --job-name=ceb --nodes=1 --gres=gpu:1 --time=0:05:00 -p gen_gpu
 
 # Load PyTorch GPU packages​
 module load pytorch/2.0.0-conda3.7-GPU
