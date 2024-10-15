@@ -1,27 +1,19 @@
 # SickKids HPC - GPU-Accelerated PyTorch Demo
 
 
-### Request GPU and Set up Environment
+### Request GPU
 ```
 # Request 1 GPU for 5 minutes​
-srun --job-name=ceb --nodes=1 --gres=gpu:1 --time=0:05:00 -p gen_gpu --pty bash
+salloc --nodes=1 --gres=gpu:1 --time=0:05:00 -p gen_gpu​
+```
 
+### Prepare Python Interpreter
+```
 # Load PyTorch GPU packages​
 module load pytorch/2.0.0-conda3.7-GPU
-```
 
-### Load PyTorch
-```
 # Launch Python interpreter
 python
-
-# (In Python Interpreter From Now) Load libraries
-import time​
-import torch​
-From torchvision.models import efficientnet_b0
-
-# Check if GPU is recognized
-assert torch.cuda.is_available()
 ```
 ### Timing Experiment 1. Matrix Multiplication
 ```
