@@ -67,7 +67,7 @@ img = torch.randn(1, 3, 224, 224)
 
 # Function to perform inference and time it
 @torch.no_grad()
-def time_forward(device):
+def time_forward(device, model, img):
     model = model.to(device)
     img = img.to(device)
     start_time = time.time()
@@ -77,11 +77,11 @@ def time_forward(device):
     return end_time - start_time
 
 # Time on CPU
-print(f"CPU Time: {time_forward('cpu'):.4f} seconds")
+print(f"CPU Time: {time_forward('cpu', model, img):.4f} seconds")
 
 # Run once to prime GPU
-time_forward('cuda')
+time_forward('cuda', model, img)
 
 # Time on GPU
-print(f"GPU Time: {time_forward('cuda'):.4f} seconds")
+print(f"GPU Time: {time_forward('cuda', model, img):.4f} seconds")
 ```
